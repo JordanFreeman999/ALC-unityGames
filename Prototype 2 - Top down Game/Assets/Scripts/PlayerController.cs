@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private float hInput;
     private float vInput;
 
-    public float xRange = 10.5f;
+    public float xRange = 9.2f;
     public float yRange = 4.5f;
     public GameObject projectile;
     public Transform firePoint;
