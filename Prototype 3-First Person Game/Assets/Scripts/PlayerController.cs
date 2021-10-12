@@ -41,16 +41,16 @@ public class PlayerController : MonoBehaviour
     
     Vector3 dir = transform.right * x + transform.forward * z;
     // Jump direction
-    dir = rb.velocity.y;
+    dir.y = rb.velocity.y;
     // apply direction to camera movement
     rb.velocity = dir;
 
     }
     void Jump()
     {
-        Ray ray = new Ray(transform.positiion, Vector3.down);
+        Ray ray = new Ray(transform.position, Vector3.down);
         //creates a ray to check if grounded, similar to a drone
-        if(physics.Raycast(ray, 1.1f))
+        if(Physics.Raycast(ray, 1.1f))
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
     void CamLook()
