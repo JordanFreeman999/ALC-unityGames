@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     //components
     private Camera cam;
     private Rigidbody rb;
+    private Weapon weapon;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,7 +34,13 @@ public class PlayerController : MonoBehaviour
         CamLook();
         if(Input.GetButtonDown("Jump"))
             Jump();
+        if(Input.getButton("Fire1"))
+        {
+            if(weapon.CanShoot())
+                weapon.Shoot();
+        }
     }
+   
     void Move()
     {
     float x = Input.GetAxis("Horizontal") * moveSpeed;
