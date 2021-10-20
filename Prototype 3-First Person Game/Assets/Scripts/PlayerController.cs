@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         // Get the components
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
+        weapon = GetComponent<Weapon>();
         
     }
     
@@ -34,9 +35,9 @@ public class PlayerController : MonoBehaviour
         CamLook();
         if(Input.GetButtonDown("Jump"))
             Jump();
-        if(Input.getButton("Fire1"))
+        if(Input.GetButton("Fire1"))
         {
-            if(weapon.CanShoot())
+            if(weapon.Canshoot())
                 weapon.Shoot();
         }
     }

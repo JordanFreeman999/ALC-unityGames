@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weaoib : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public GameObject bulletProjectile;
 
@@ -17,7 +17,7 @@ public class Weaoib : MonoBehaviour
     public float lastShootTime;
     private bool isPlayer;
     
-    void Awake ()
+    void Awake()
     {
         if(GetComponent<PlayerController>())
         {
@@ -33,6 +33,7 @@ public class Weaoib : MonoBehaviour
             if(curAmmo > 0 || infiniteAmmo == true)
             return true;
         }
+        return false;
     }
     // Start is called before the first frame update
     void Start()
