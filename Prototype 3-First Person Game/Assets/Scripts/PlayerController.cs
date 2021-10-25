@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
             Jump();
         if(Input.GetButton("Fire1"))
         {
-            if(weapon.Canshoot())
+            if(weapon.CanShoot())
                 weapon.Shoot();
         }
     }

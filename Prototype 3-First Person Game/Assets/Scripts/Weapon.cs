@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     public int maxAmmo;
 
     public bool infiniteAmmo;
+    public float bulletSpeed;
     public float shootRate;
     public float lastShootTime;
     private bool isPlayer;
@@ -26,34 +27,27 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public bool Canshoot()
+    public bool CanShoot()
     {
         if(Time.time - lastShootTime >= shootRate)
         {
             if(curAmmo > 0 || infiniteAmmo == true)
+            {
             return true;
+            }
         }
+
         return false;
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
  public void Shoot()
     {
         lastShootTime = Time.time;
         curAmmo --;
 
         GameObject bullet = Instantiate(bulletProjectile, muzzle.position, muzzle.rotation);
-        bullet.GetComponent<RigidBody>().velocity = muzzle.forward * bulletSpeed;
+        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-
     
 }
