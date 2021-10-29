@@ -29,8 +29,5 @@ public class Pickup : MonoBehaviour
             gameManager.hasKey = true;
             Destroy(gameObject);
         }
-        else {
-            print("not a player");
-        }
     }
 }
