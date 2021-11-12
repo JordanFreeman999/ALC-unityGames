@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Stats")]
+    public int curHP;
+    public int maxHP;
     //Movement
     public float moveSpeed;
     public float jumpForce;
+    public float sprint;
     //Camera
     public float lookSensitivity;
     public float maxlookX;
@@ -40,6 +44,16 @@ public class PlayerController : MonoBehaviour
             if(weapon.CanShoot())
                 weapon.Shoot();
         }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed + sprint;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+            moveSpeed = moveSpeed - sprint;
+        else
+        {
+             moveSpeed = moveSpeed;
+        }
     }
    
     void Move()
@@ -71,5 +85,18 @@ public class PlayerController : MonoBehaviour
 
     cam.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
     transform.eulerAngles += Vector3.up * y;
+    }
+    public void TakeDamage(int damage)
+    {
+        // These 2 mean the same thing.
+        curHP -= damage; // Shorthand Notation
+        curHP = curHP - damage; // Longhand Notation
+
+        if(curHP <= 0)
+            Die();
+    }
+    void Die()
+    {
+        print("Get good kid, dogwater, free, no earnings");
     }
 }

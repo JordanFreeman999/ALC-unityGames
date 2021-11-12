@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public int curHP;
 
     public int maxHP;
-    public int socreToGive;
+    public int scoreToGive;
 
     [Header ("Movement")]
     public float moveSpeed, attackRange, yPathOffset;
@@ -47,6 +47,17 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, path[0] + new Vector3(0, yPathOffset, 0), moveSpeed * Time.deltaTime);
         if(transform.position == path[0] + new Vector3(0, yPathOffset,0))
             path.RemoveAt(0);
+    }
+  public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+            Die();
+    }
+    void Die()
+    {
+        Destroy(gameObject);
     }
     // Update is called once per frame
     void Update()
