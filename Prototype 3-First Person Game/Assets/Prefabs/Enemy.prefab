@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHP: 30
-  maxHP: 20
+  maxHP: 50
   scoreToGive: 0
   moveSpeed: 1000
   attackRange: 100
