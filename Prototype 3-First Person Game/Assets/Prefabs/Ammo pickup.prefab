@@ -112,4 +112,4 @@ MonoBehaviour:
   value: 300
   rotationSpeed: 10
   bobSpeed: 5
-  bobHeight: 3
+  bobHeight: 1
