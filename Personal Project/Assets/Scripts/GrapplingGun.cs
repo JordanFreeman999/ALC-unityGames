@@ -5,15 +5,14 @@ public class GrapplingGun : MonoBehaviour {
     private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
-    public Transform gunTip, camera, player, secondaryCamera;
-    public Camera camera1Exact, camera2Exact;
+    public Transform gunTip, camera, player;
+    public Camera camera1Exact;
     private float maxDistance = 100f;
     private SpringJoint joint;
 
     void Awake() {
         lr = GetComponent<LineRenderer>();
-        camera1Exact.enabled = true;
-        camera2Exact.enabled = false;
+
     }
 
     void Update() {
@@ -55,10 +54,7 @@ public class GrapplingGun : MonoBehaviour {
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
         }
-         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable)) {
-        camera1Exact.enabled = false;
-        camera2Exact.enabled = true;
-    }
+
     }
    
 
@@ -66,11 +62,10 @@ public class GrapplingGun : MonoBehaviour {
     /// Call whenever we want to stop a grapple
     /// </summary>
     void StopGrapple() {
-        camera1Exact.enabled = true;
         lr.positionCount = 0;
         Destroy(joint);
+
         
-        camera2Exact.enabled = false;
     }
 
     private Vector3 currentGrapplePosition;

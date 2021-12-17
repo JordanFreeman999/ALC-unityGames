@@ -1081,16 +1081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1dfb352cad24eff80651d52c36e5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lr: {fileID: 0}
-  grapplePoint: {x: 0, y: 0, z: 0}
-  whatIsGrappleable:
-    m_Bits: 256
-  gunTip: {fileID: 825579422}
-  camera: {fileID: 963194228}
-  player: {fileID: 1344183831}
-  maxDistance: 100
-  joint: {fileID: 0}
-  currentGrapplePosition: {x: 0, y: 0, z: 0}
 --- !u!120 &1038004589
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2010,9 +2000,7 @@ MonoBehaviour:
   gunTip: {fileID: 1864903365}
   camera: {fileID: 329289312}
   player: {fileID: 1344183831}
-  secondaryCamera: {fileID: 386546949}
   camera1Exact: {fileID: 963194227}
-  camera2Exact: {fileID: 1392142092}
 --- !u!1 &1992089930
 GameObject:
   m_ObjectHideFlags: 0
