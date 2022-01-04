@@ -17,12 +17,16 @@ public class Weapon : MonoBehaviour
     public float shootRate;
     public float lastShootTime;
     private bool isPlayer;
+
+    public AudioClip shootSfx;
+    private AudioSource audioSource;
     
     void Awake()
     {
         if(GetComponent<PlayerController>())
         {
             isPlayer = true;
+            audioSource = GetComponent<AudioSource>();
         }
 
     }
@@ -43,6 +47,7 @@ public class Weapon : MonoBehaviour
 
  public void Shoot()
     {
+        audioSource. PlayOneShot(shootSfx);
         lastShootTime = Time.time;
         curAmmo --;
 
@@ -50,6 +55,9 @@ public class Weapon : MonoBehaviour
         bullet.transform.position = muzzle.position;
         bullet.transform.rotation = muzzle.rotation;
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+
+        if(isPlayer)
+            GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
     }
     
 }

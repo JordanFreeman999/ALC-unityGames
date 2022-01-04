@@ -19,12 +19,15 @@ public class Enemy : MonoBehaviour
 
     private Weapon weapon;
     private GameObject target;
+
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         curHP = maxHP;
         weapon = GetComponent<Weapon>();
         target = FindObjectOfType<PlayerController>().gameObject;
+        rb = GetComponent<Rigidbody>();
 
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
@@ -47,19 +50,7 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, path[0] + new Vector3(0, yPathOffset, 0), moveSpeed * Time.deltaTime);
         if(transform.position == path[0] + new Vector3(0, yPathOffset,0))
             path.RemoveAt(0);
-    }
-  public void TakeDamage(int damage)
-    {
-        curHP -= damage;
-
-        if(curHP <= 0)
-            Die();
-    }
-    void Die()
-    {
-        Destroy(gameObject);
-    }
-    // Update is called once per frame
+    } 
     void Update()
     {
         Vector3 dir =(target.transform.position - transform.position).normalized;
@@ -78,4 +69,21 @@ public class Enemy : MonoBehaviour
             ChaseTarget();
         }
     }
+  public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+            Die();
+    }
+    void Die()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(Vector3.back * 10, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        GameManager.instance.AddScore(scoreToGive);
+        Destroy(gameObject);
+    }
+    // Update is called once per frame
+   
 }

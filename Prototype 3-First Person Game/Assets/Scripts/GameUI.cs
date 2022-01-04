@@ -10,7 +10,7 @@ public class GameUI : MonoBehaviour
     [Header("HUD")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI ammoText;
-    public TextMeshProUGUI healthBarFill;
+    public Image healthBarFill;
     
     [Header("Pause Menu")]
     public GameObject pauseMenu;
@@ -44,7 +44,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdateScoreText(int score)
     {
-        scoreText.text = "Score" + score;
+        scoreText.text = "Score: " + score;
     }
 
     public void UpdateAmmoText(int curAmmo, int maxAmmo)
@@ -52,22 +52,22 @@ public class GameUI : MonoBehaviour
         ammoText.text = "Ammo: " + curAmmo + " / " + maxAmmo;
     }
 
-    public void TogglePuaseMenu(bool paused)
+    public void TogglePauseMenu(bool paused)
     {
         pauseMenu.SetActive(paused);
     }
 
-    public void setEndGameScreen(bool won, int score)
+    public void SetEndGameScreen(bool won, int score)
     {
         endGameScreen.SetActive(true);
         endGameHeaderText.text = won == true ? "You win" : "You Lose";
-        endGameHeaderText.color = won == true ? Color.green : Color.red;
+        endGameHeaderText.color = won == true ? Color.blue : Color.red;
         endGameScoreText.text = "<b>Score</b>\n" + score;
     }
 
     public void OnResumeButton()
     {
-
+        GameManager.instance.TogglePauseGame();
     }
 
     public void OnRestartButton()
@@ -76,6 +76,6 @@ public class GameUI : MonoBehaviour
     }
     public void onMenuButton()
     {
-        SceneManage.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
     }
 }
