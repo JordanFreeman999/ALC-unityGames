@@ -28,7 +28,7 @@ public class GameUI : MonoBehaviour
     }
     void Start()
     {
-        
+        pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class GameUI : MonoBehaviour
         pauseMenu.SetActive(paused);
     }
 
-    public void SetEndGameScreen(bool won, int score)
+    public void GetEndGameScreen(bool won, int score)
     {
         endGameScreen.SetActive(true);
         endGameHeaderText.text = won == true ? "You win" : "You Lose";

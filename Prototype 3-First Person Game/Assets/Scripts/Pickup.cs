@@ -9,6 +9,7 @@ public enum PickupType
 
        Blizzard
    }
+
 public class Pickup : MonoBehaviour
 {
    public PickupType type;
@@ -21,7 +22,6 @@ public class Pickup : MonoBehaviour
     private Vector3 startPos;
     private bool bobbingUp;
     public AudioClip pickupSfx;
-
     // Start is called before the first frame update
     void Start()
     {

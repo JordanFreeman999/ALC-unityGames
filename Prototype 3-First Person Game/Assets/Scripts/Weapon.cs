@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
 
  public void Shoot()
     {
-        audioSource. PlayOneShot(shootSfx);
+        audioSource.PlayOneShot(shootSfx);
         lastShootTime = Time.time;
         curAmmo --;
 
