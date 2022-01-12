@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FinishLine : MonoBehaviour
-{
 
+{
+    public GameObject hat;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-void OnTriggerEnter(Collider other)
+
+
+
+    // Update is called once per frame
+    
+    void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            GameManager.instance.AddScore(1);
+
+   
+            
+            hat.SetActive(true);
             Destroy(gameObject);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
